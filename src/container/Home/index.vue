@@ -1,0 +1,24 @@
+<template>
+  <div class="home">
+      <home-header></home-header>
+      Home
+  </div>
+</template>
+
+<script>
+import HomeHeader from '@/components/HomeHeader/'
+export default {
+  name: 'Home',
+  components: {
+      HomeHeader
+  }
+}
+</script>
+
+
+<style>
+    .home{
+        font-size: 20px;
+    }
+</style>
+
