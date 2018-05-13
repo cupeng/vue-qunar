@@ -17,8 +17,5 @@ export default {
 
 
 <style>
-    .home{
-        font-size: 20px;
-    }
 </style>
 
