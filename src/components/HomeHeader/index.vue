@@ -7,10 +7,12 @@
           <i class="iconfont icon-search"></i>
           <input type="text" placeholder="输入城市/景点/游玩主题" />
       </div>
-      <div class="header-right">
-          {{this.city}}
-          <i class="iconfont icon-jiantou"></i>
-      </div>
+      <router-link to="/city">
+        <div class="header-right">
+            {{this.city}}
+            <i class="iconfont icon-jiantou"></i>
+        </div>
+      </router-link>
       
   </header>
 </template>
@@ -28,9 +30,9 @@ export default {
 <style lang="stylus" scoped>
     @import '~@/assets/styles/varibles.styl'
     .header
-        font-size: 16px
         display: flex
-        line-height: .86rem
+        height:$headerHeight
+        line-height:$headerHeight
         background: $bgColor
         color: #fff
         .header-left
@@ -38,8 +40,7 @@ export default {
             text-align: center
             float: left
             i
-                text-align: center 
-                font-size: .4rem
+                font-size: .3rem
         .header-input
             flex: 1
             height: .64rem
@@ -59,9 +60,10 @@ export default {
             float: right
             text-align: center
             color: #fff
-            font-size: .35rem 
+            font-size: .3rem 
             i
                 margin-left: .04rem
-                font-size: .24rem 
+                font-size: .14rem 
+                vertical-align:top
 </style>
 
