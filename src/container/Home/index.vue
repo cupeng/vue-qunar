@@ -1,14 +1,15 @@
 <template>
   <div class="home">
-      <home-header></home-header>
-      <home-swiper></home-swiper>
-      <home-icon></home-icon>
-      <home-recommend></home-recommend>
-      <home-weeked></home-weeked>
+      <home-header :city="city"></home-header>
+      <home-swiper :swiperList="swiperList"></home-swiper>
+      <home-icon :iconList="iconList"></home-icon>
+      <home-recommend :recommendList="recommendList"></home-recommend>
+      <home-weeked :weekendList="weekendList"></home-weeked>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 import HomeHeader from '@/components/HomeHeader/'
 import HomeSwiper from '@/components/HomeSwiper/'
 import HomeIcon from '@/components/HomeIcon/'
@@ -22,6 +23,35 @@ export default {
       HomeIcon,
       HomeRecommend,
       HomeWeeked
+  },
+  data () {
+    return {
+      city: '北京',
+      swiperList: [],
+      iconList: [],
+      recommendList: [],
+      weekendList: []
+
+    }
+  },
+  methods: {
+    getHomeInfo () {
+      axios.get('/api/index.json')
+        .then(this.getHomeInfoSucc)
+    },
+    getHomeInfoSucc (response) {
+       const res = response.data
+       if (res.ret && res.data ) {
+         const data = res.data
+         this.swiperList = data.swiperList
+         this.iconList = data.iconList
+         this.recommendList = data.recommendList
+         this.weekendList = data.weekendList
+       }
+    }
+  },
+  mounted　() {
+    this.getHomeInfo()
   }
 }
 </script>
