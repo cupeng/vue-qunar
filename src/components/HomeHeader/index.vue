@@ -9,7 +9,7 @@
       </div>
       <router-link to="/city">
         <div class="header-right">
-            {{this.city}}
+            {{this.doubleCity}}
             <i class="iconfont icon-jiantou"></i>
         </div>
       </router-link>
@@ -19,10 +19,12 @@
 
 
 <script>
+import { mapState,mapGetters } from 'vuex'
 export default {
   name: 'HomeHeader',
-  props: {
-      city: String
+  computed: {
+      ...mapState(['city']),
+      ...mapGetters(['doubleCity'])
   }
 }
 </script>
@@ -52,7 +54,7 @@ export default {
             border-radius: .1rem
             color: #ccc
             input 
-                width: 90%
+                width: 88%
                 margin-bottom:.08rem
         .header-right
             min-width: 1.04rem
