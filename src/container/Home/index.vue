@@ -15,6 +15,7 @@ import HomeSwiper from '@/components/HomeSwiper/'
 import HomeIcon from '@/components/HomeIcon/'
 import HomeRecommend from '@/components/HomeRecommend/'
 import HomeWeeked from '@/components/HomeWeeked/'
+import {  mapState } from 'vuex'
 export default {
   name: 'Home',
   components: {
@@ -33,9 +34,12 @@ export default {
 
     }
   },
+  computed: {
+    ...mapState(['city'])
+  },
   methods: {
     getHomeInfo () {
-      axios.get('/api/index.json')
+      axios.get('/api/index.json?city='+this.city)
         .then(this.getHomeInfoSucc)
     },
     getHomeInfoSucc (response) {

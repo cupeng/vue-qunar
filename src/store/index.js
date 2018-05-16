@@ -9,10 +9,5 @@ let defaultCity = '上海'
 
 export default new Vuex.Store({
     state,
-    mutations,
-    getters: {
-    	doubleCity (state) {
-    		return state.city + '' + state.city
-    	}
-    }
+    mutations
 })
